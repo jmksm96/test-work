@@ -1,0 +1,5 @@
+.span {
+    width:85%;
+    display:flex;
+    justify-content:flex-end;
+}
