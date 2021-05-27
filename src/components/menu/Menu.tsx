@@ -18,7 +18,7 @@ import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import {Avatar, ListItemIcon, ListItemText} from "@material-ui/core";
 import s from './Menu.module.css'
 import {BrowserRouter, Link, Route} from "react-router-dom";
-import Search from "../cloud/Search";
+import Search from "../search/Search";
 import Bookmarks from "../bookmarks/bookmarks";
 
 const drawerWidth = 240;
