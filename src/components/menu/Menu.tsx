@@ -15,10 +15,13 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import CloudIcon from '@material-ui/icons/Cloud';
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
-import {Avatar, Link, ListItemIcon, ListItemText} from "@material-ui/core";
+import {Avatar, ListItemIcon, ListItemText} from "@material-ui/core";
 import s from './Menu.module.css'
 import Search from "../common/components/Search";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Link, Route} from "react-router-dom";
+import Cloud from "../cloud/Cloud";
+import Bookmarks from "../bookmarks/bookmarks";
+import classes from "*.module.scss";
 
 const drawerWidth = 240;
 
@@ -95,80 +98,85 @@ const Menu = () => {
     };
 
     return (
-     <BrowserRouter>
-        <div className={classes.root}>
-            <CssBaseline/>
-            <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}
-            >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Image Finder
-                    </Typography>
-                    <span className={s.span}>  <Avatar src="/broken-image.jpg"/></span>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                className={classes.drawer}
-                variant="persistent"
-                anchor="left"
-                open={open}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
-                    </IconButton>
-                </div>
-                <Divider/>
-                <List>
-                    <Link href='cloud'>
-                        <ListItem button >
-                            <ListItemIcon>
-                                <CloudIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Cloud" />
-                        </ListItem>
-                    </Link>
-                    <Link href='bookmarks'>
-                    <ListItem button >
-                        <ListItemIcon>
-                            <BookmarksIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Bookmarks" />
-                    </ListItem>
-                    </Link>+27
-                </List>
-                <Divider/>
-            </Drawer>
-            <main
-                className={clsx(classes.content, {
-                    [classes.contentShift]: open,
-                })}
-            >
-                <div className={classes.drawerHeader}/>
-                <form className={classes.root} noValidate autoComplete="off">
-                    <Search/>
-                </form>
-            </main>
-        </div>
-     </BrowserRouter>
-);
+        <BrowserRouter>
+
+            <div className={classes.root}>
+                <CssBaseline/>
+                <AppBar
+                    position="fixed"
+                    className={clsx(classes.appBar, {
+                        [classes.appBarShift]: open,
+                    })}
+                >
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            className={clsx(classes.menuButton, open && classes.hide)}
+                        >
+                            <MenuIcon/>
+                        </IconButton>
+                        <Typography variant="h6" noWrap>
+                            Image Finder
+                        </Typography>
+                        <span className={s.span}>  <Avatar src="/broken-image.jpg"/></span>
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    className={classes.drawer}
+                    variant="persistent"
+                    anchor="left"
+                    open={open}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    <div className={classes.drawerHeader}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
+                        </IconButton>
+                    </div>
+                    <Divider/>
+                    <List>
+                        <Link to='/cloud'>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <CloudIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Cloud"/>
+                            </ListItem>
+                        </Link>
+                        <Link to='/bookmarks'>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <BookmarksIcon/>
+                                </ListItemIcon>
+
+                                <ListItemText primary="Bookmarks"/>
+                            </ListItem>
+                        </Link>
+                    </List>
+                    <Divider/>
+                </Drawer>
+                <main
+                    className={clsx(classes.content, {
+                        [classes.contentShift]: open,
+                    })}
+                >
+                    <div className={classes.drawerHeader}/>
+                    <form className={classes.root} noValidate autoComplete="off">
+                        <Search/>
+                    </form>
+                </main>
+            </div>
+            <Route path='/cloud' render={() => <Cloud/>}/>
+            <Route path='/bookmarks' render={() => <Bookmarks/>}/>
+        </BrowserRouter>
+    );
 }
 
 
 export default Menu
+

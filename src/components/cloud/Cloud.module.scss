@@ -1,0 +1,13 @@
+@import "./../common/styles/Sass/mixins";
+
+
+.paginator {
+  justify-content:flex-end;
+  display: flex;
+}
+
+.container {
+  margin-top: 50px;
+  @include flex(row, space-between, flex-start, wrap);
+  @include flex(row, space-between, flex-start, wrap);
+}
