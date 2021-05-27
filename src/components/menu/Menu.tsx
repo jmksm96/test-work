@@ -17,15 +17,13 @@ import CloudIcon from '@material-ui/icons/Cloud';
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import {Avatar, ListItemIcon, ListItemText} from "@material-ui/core";
 import s from './Menu.module.css'
-import Search from "../common/components/Search";
 import {BrowserRouter, Link, Route} from "react-router-dom";
-import Cloud from "../cloud/Cloud";
+import Search from "../cloud/Search";
 import Bookmarks from "../bookmarks/bookmarks";
-import classes from "*.module.scss";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
+export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             display: 'flex',
@@ -145,7 +143,7 @@ const Menu = () => {
                                 <ListItemIcon>
                                     <CloudIcon/>
                                 </ListItemIcon>
-                                <ListItemText primary="Cloud"/>
+                                <ListItemText primary="Search"/>
                             </ListItem>
                         </Link>
                         <Link to='/bookmarks'>
@@ -166,12 +164,10 @@ const Menu = () => {
                     })}
                 >
                     <div className={classes.drawerHeader}/>
-                    <form className={classes.root} noValidate autoComplete="off">
-                        <Search/>
-                    </form>
+                    
                 </main>
             </div>
-            <Route path='/cloud' render={() => <Cloud/>}/>
+            <Route path='/cloud' render={() => <Search/>}/>
             <Route path='/bookmarks' render={() => <Bookmarks/>}/>
         </BrowserRouter>
     );

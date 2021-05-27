@@ -16,7 +16,7 @@ const Paginator = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Pagination count={10} color="primary"/>
+            <Pagination count={10} color="primary" />
         </div>
     );
 }

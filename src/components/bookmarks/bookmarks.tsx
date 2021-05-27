@@ -7,7 +7,7 @@ const Bookmarks = () => {
 
     return (
         <div>
-            <Picture/>
+            {/*<Picture/>*/}
         </div>
     )
 }
