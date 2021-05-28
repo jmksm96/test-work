@@ -1,35 +1,41 @@
-import React from 'react';
-import clsx from 'clsx';
-import {createStyles, makeStyles, Theme, useTheme} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import CloudIcon from '@material-ui/icons/Cloud';
-import BookmarksIcon from '@material-ui/icons/Bookmarks';
+import React from "react";
+import clsx from "clsx";
+import {
+    createStyles,
+    makeStyles,
+    Theme,
+    useTheme,
+} from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import List from "@material-ui/core/List";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ListItem from "@material-ui/core/ListItem";
+import CloudIcon from "@material-ui/icons/Cloud";
+import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import {Avatar, ListItemIcon, ListItemText} from "@material-ui/core";
-import s from './Menu.module.css'
+import s from "./Menu.module.css";
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import Search from "../search/Search";
-import Bookmarks from "../bookmarks/bookmarks";
+import Bookmarks from "../bookmarks/Bookmarks";
 
 const drawerWidth = 240;
+
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            display: 'flex',
+            display: "flex",
         },
         appBar: {
-            transition: theme.transitions.create(['margin', 'width'], {
+            transition: theme.transitions.create(["margin", "width"], {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
             }),
@@ -37,7 +43,7 @@ export const useStyles = makeStyles((theme: Theme) =>
         appBarShift: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
-            transition: theme.transitions.create(['margin', 'width'], {
+            transition: theme.transitions.create(["margin", "width"], {
                 easing: theme.transitions.easing.easeOut,
                 duration: theme.transitions.duration.enteringScreen,
             }),
@@ -46,7 +52,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             marginRight: theme.spacing(2),
         },
         hide: {
-            display: 'none',
+            display: "none",
         },
         drawer: {
             width: drawerWidth,
@@ -56,30 +62,30 @@ export const useStyles = makeStyles((theme: Theme) =>
             width: drawerWidth,
         },
         drawerHeader: {
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             padding: theme.spacing(0, 1),
             // necessary for content to be below app bar
             ...theme.mixins.toolbar,
-            justifyContent: 'flex-end',
+            justifyContent: "flex-end",
         },
         content: {
             flexGrow: 1,
             padding: theme.spacing(3),
-            transition: theme.transitions.create('margin', {
+            transition: theme.transitions.create("margin", {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
             }),
             marginLeft: -drawerWidth,
         },
         contentShift: {
-            transition: theme.transitions.create('margin', {
+            transition: theme.transitions.create("margin", {
                 easing: theme.transitions.easing.easeOut,
                 duration: theme.transitions.duration.enteringScreen,
             }),
             marginLeft: 0,
         },
-    }),
+    })
 );
 
 const Menu = () => {
@@ -97,7 +103,6 @@ const Menu = () => {
 
     return (
         <BrowserRouter>
-
             <div className={classes.root}>
                 <CssBaseline/>
                 <AppBar
@@ -119,7 +124,10 @@ const Menu = () => {
                         <Typography variant="h6" noWrap>
                             Image Finder
                         </Typography>
-                        <span className={s.span}>  <Avatar src="/broken-image.jpg"/></span>
+                        <span className={s.span}>
+							{" "}
+                            <Avatar src="/broken-image.jpg"/>
+						</span>
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -133,12 +141,16 @@ const Menu = () => {
                 >
                     <div className={classes.drawerHeader}>
                         <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
+                            {theme.direction === "ltr" ? (
+                                <ChevronLeftIcon/>
+                            ) : (
+                                <ChevronRightIcon/>
+                            )}
                         </IconButton>
                     </div>
                     <Divider/>
                     <List>
-                        <Link to='/cloud'>
+                        <Link to="/search" className={s.link}>
                             <ListItem button>
                                 <ListItemIcon>
                                     <CloudIcon/>
@@ -146,12 +158,11 @@ const Menu = () => {
                                 <ListItemText primary="Search"/>
                             </ListItem>
                         </Link>
-                        <Link to='/bookmarks'>
+                        <Link to="/bookmarks" className={s.link}>
                             <ListItem button>
                                 <ListItemIcon>
                                     <BookmarksIcon/>
                                 </ListItemIcon>
-
                                 <ListItemText primary="Bookmarks"/>
                             </ListItem>
                         </Link>
@@ -164,15 +175,12 @@ const Menu = () => {
                     })}
                 >
                     <div className={classes.drawerHeader}/>
-                    
                 </main>
             </div>
-            <Route path='/cloud' render={() => <Search/>}/>
-            <Route path='/bookmarks' render={() => <Bookmarks/>}/>
+            <Route path="/search" render={() => <Search/>}/>
+            <Route path="/bookmarks" render={() => <Bookmarks/>}/>
         </BrowserRouter>
     );
-}
+};
 
-
-export default Menu
-
+export default Menu;
