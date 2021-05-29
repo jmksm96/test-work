@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Button} from "@material-ui/core";
 import {PictureType} from "../search/picture/Picture";
 import style from "../search/picture/Picture.module.scss";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 
 const Bookmarks = () => {
@@ -22,7 +23,8 @@ const Bookmarks = () => {
                     <Button variant="contained"
                             className={style.button}
                             size="small"
-                            color="primary"
+                            startIcon={<DeleteIcon />}
+                            color="secondary"
                             onClick={() => {
                                 localStorage.removeItem(id)
                                 setIds(id)

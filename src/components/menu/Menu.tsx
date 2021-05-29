@@ -25,6 +25,7 @@ import s from "./Menu.module.css";
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import Search from "../search/Search";
 import Bookmarks from "../bookmarks/Bookmarks";
+import {Redirect} from "react-router";
 
 const drawerWidth = 240;
 
@@ -103,6 +104,7 @@ const Menu = () => {
 
     return (
         <BrowserRouter>
+            <Redirect to={'/search'}/>
             <div className={classes.root}>
                 <CssBaseline/>
                 <AppBar
