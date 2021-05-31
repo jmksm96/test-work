@@ -4,17 +4,12 @@
   margin-top: 50px;
   @include flex(row, space-between, flex-start, wrap);
 
-  .paginator {
-    justify-content: flex-end;
-    display: flex;
-    margin-top: 30px;
-  }
+}
 
-  .textField {
-    width: 80%;
-    position: absolute;
-  }
-
+.paginator {
+  justify-content: flex-end;
+  display: flex;
+  margin-top: 30px;
 }
 
 h2 {
