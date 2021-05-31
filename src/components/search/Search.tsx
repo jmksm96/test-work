@@ -24,7 +24,7 @@ const Search = () => {
                     setPagesCount(res.photos.pages)
                 })
                 .catch((err) => {
-                    setError('Some error')
+                    setError("Some error")
                 })
         }
     }, [requestText, pageNumber])
@@ -64,7 +64,7 @@ const Search = () => {
                            onChange={onChangeHandler}
                            onBlur={onBlurHandler}
                            onKeyPress={onKeyPressHandler}
-                           />
+                />
                 <Button onClick={onClickHandler}
                         color="primary"
                         variant="contained">Find</Button>
@@ -73,7 +73,7 @@ const Search = () => {
                 <Paginator currentPage={1} pagesCount={pagesCount} portionSize={10} onPageChanged={setPageNumber}/>
             </div>
             <div className={style.container}>
-                <Picture pictures = {pictureList}/>
+                <Picture pictures={pictureList}/>
             </div>
         </div>
     )

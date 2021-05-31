@@ -1,11 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import {
-    createStyles,
-    makeStyles,
-    Theme,
-    useTheme,
-} from "@material-ui/core/styles";
+import {createStyles, makeStyles, Theme, useTheme,} from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -21,8 +16,8 @@ import ListItem from "@material-ui/core/ListItem";
 import CloudIcon from "@material-ui/icons/Cloud";
 import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import {Avatar, ListItemIcon, ListItemText} from "@material-ui/core";
-import s from "./Menu.module.css";
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import s from "./Menu.module.scss";
+import {BrowserRouter, Link, Route} from "react-router-dom";
 import Search from "../search/Search";
 import Bookmarks from "../bookmarks/Bookmarks";
 import {Redirect} from "react-router";
@@ -66,7 +61,6 @@ export const useStyles = makeStyles((theme: Theme) =>
             display: "flex",
             alignItems: "center",
             padding: theme.spacing(0, 1),
-            // necessary for content to be below app bar
             ...theme.mixins.toolbar,
             justifyContent: "flex-end",
         },
@@ -178,7 +172,7 @@ const Menu = () => {
                     <div className={classes.drawerHeader}/>
                 </main>
             </div>
-            <Route path="/" render={() => <Redirect to={'/search'}/>}/>
+            <Route path="/" render={() => <Redirect to={"/search"}/>}/>
             <Route path="/search" render={() => <Search/>}/>
             <Route path="/bookmarks" render={() => <Bookmarks/>}/>
 
