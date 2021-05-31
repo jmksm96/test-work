@@ -52,7 +52,7 @@ const Picture = (props: propsType) => {
         const {farm, server, id, secret, title} = picture;
         return (
             <ul key={idPic}>
-                <div className={'title'}>{title}</div>
+                <div className={style.title}>{title}</div>
                 <img src={getPicUrl(farm, server, id, secret)} width="300px" height="300px"/>
                 {!!localStorage.getItem(id) ?
                     <Button variant="contained"
