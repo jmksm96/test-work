@@ -1,0 +1,21 @@
+@import "../../common/styles/Sass/mixins";
+
+
+.pictureContainer {
+  margin-top: 50px;
+  height: 30vh;
+  width: 100%;
+  @include flex(row, flex-start, center, wrap);
+
+
+  .button {
+    display: flex;
+    margin-top: 50px;
+  }
+
+  .field {
+    display: flex;
+  }
+
+
+}

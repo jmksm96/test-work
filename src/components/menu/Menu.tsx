@@ -22,7 +22,7 @@ import CloudIcon from "@material-ui/icons/Cloud";
 import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import {Avatar, ListItemIcon, ListItemText} from "@material-ui/core";
 import s from "./Menu.module.css";
-import {BrowserRouter, Link, Route} from "react-router-dom";
+import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 import Search from "../search/Search";
 import Bookmarks from "../bookmarks/Bookmarks";
 import {Redirect} from "react-router";
@@ -103,8 +103,7 @@ const Menu = () => {
     };
 
     return (
-        <BrowserRouter>
-            <Redirect to={'/search'}/>
+        <BrowserRouter basename="">
             <div className={classes.root}>
                 <CssBaseline/>
                 <AppBar
@@ -179,8 +178,10 @@ const Menu = () => {
                     <div className={classes.drawerHeader}/>
                 </main>
             </div>
+            <Route path="/" render={() => <Redirect to={'/search'}/>}/>
             <Route path="/search" render={() => <Search/>}/>
             <Route path="/bookmarks" render={() => <Bookmarks/>}/>
+
         </BrowserRouter>
     );
 };
