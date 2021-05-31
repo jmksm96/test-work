@@ -73,12 +73,19 @@ const Search = () => {
                         color="primary"
                         variant="contained">Find</Button>
             </form>
-            <div className={style.paginator}>
-                <Pagination count={Math.ceil(pagesCount/15)} page={page} shape="rounded" onChange={handleChange} />
-            </div>
-            <div className={style.container}>
-                <Picture pictures={pictureList}/>
-            </div>
+            {!requestText || pictureList.length < 1 ?
+                <h2>No images here. Whould you try to search for anything else?</h2>
+                :
+                <>
+                    <div className={style.paginator}>
+                        <Pagination count={Math.ceil(pagesCount / 15)} page={page} shape="rounded"
+                                    onChange={handleChange}/>
+                    </div>
+                    <div className={style.container}>
+                        <Picture pictures={pictureList}/>
+                    </div>
+                </>}
+
         </div>
     )
 }
