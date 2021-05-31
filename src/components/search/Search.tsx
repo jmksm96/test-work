@@ -72,7 +72,6 @@ const Search = () => {
             <div className={style.paginator}>
                 <Paginator currentPage={1} pagesCount={pagesCount} portionSize={10} onPageChanged={setPageNumber}/>
             </div>
-            <h1>SEARCH</h1>
             <div className={style.container}>
                 <Picture pictures = {pictureList}/>
             </div>
