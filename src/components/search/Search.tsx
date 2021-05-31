@@ -74,7 +74,7 @@ const Search = () => {
                         variant="contained">Find</Button>
             </form>
             <div className={style.paginator}>
-                <Pagination variant="outlined" color="primary" count={Math.ceil(pagesCount/15)} page={page} shape="rounded" onChange={handleChange} />
+                <Pagination count={Math.ceil(pagesCount/15)} page={page} shape="rounded" onChange={handleChange} />
             </div>
             <div className={style.container}>
                 <Picture pictures={pictureList}/>
