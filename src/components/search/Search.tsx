@@ -1,10 +1,10 @@
-import React, {ChangeEvent, useEffect, useState, KeyboardEvent} from "react";
-import Paginator from "../common/components/paginator/Paginator";
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from "react";
 import style from './Search.module.scss'
 import Picture, {PictureType} from "./picture/Picture";
 import api from "../../api/api";
 import {useStyles} from "../menu/Menu";
 import {Button, TextField} from "@material-ui/core";
+import {Pagination} from "@material-ui/lab";
 
 
 const Search = () => {
@@ -12,13 +12,13 @@ const Search = () => {
     const [requestText, setRequestText] = useState<string>("")
     const [inputText, setInputText] = useState<string>("")
     const [pictureList, setPictureList] = useState<Array<PictureType>>([])
-    const [pageNumber, setPageNumber] = useState<number>(1)
+    const [page, setPage] = React.useState(1);
     const [pagesCount, setPagesCount] = useState<number>(0)
     const [error, setError] = useState<string>('')
 
     useEffect(() => {
         if (requestText !== "") {
-            api.getImg(requestText, pageNumber)
+            api.getImg(requestText, page)
                 .then((res) => {
                     setPictureList(res.photos.photo)
                     setPagesCount(res.photos.pages)
@@ -27,7 +27,7 @@ const Search = () => {
                     setError("Some error")
                 })
         }
-    }, [requestText, pageNumber])
+    }, [requestText, page])
 
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +54,10 @@ const Search = () => {
         }
     }
 
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
+
     return (
         <div>
             <form className={classes.root} noValidate autoComplete="off">
@@ -70,7 +74,7 @@ const Search = () => {
                         variant="contained">Find</Button>
             </form>
             <div className={style.paginator}>
-                <Paginator currentPage={1} pagesCount={pagesCount} portionSize={10} onPageChanged={setPageNumber}/>
+                <Pagination variant="outlined" color="primary" count={Math.ceil(pagesCount/15)} page={page} shape="rounded" onChange={handleChange} />
             </div>
             <div className={style.container}>
                 <Picture pictures={pictureList}/>
